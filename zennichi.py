@@ -14,18 +14,53 @@ count = 1
 os.chdir(os.path.dirname(__file__))
 path = os.getcwd()
 
+
+
+# prefecture number
+prefecture_number = '37'
+
 # webdriver 
-url = 'https://www.zennichi.or.jp/member_search/'
+url = 'https://www.zennichi.or.jp/member_search/list/?prefecture={}&branch=&address=&representative=&shogo=&shogo_kana=&license_holder=&number=&region=&hosho_approved='.format(prefecture_number)
 driver = webdriver.Chrome()
 driver.get(url)
 
+# prefecture name
+prefecture = driver.find_element(By.XPATH, '//*[@id="prefecture"]/option[@selected="selected"]').text
+print('Starting: ' + str(prefecture) + '...')
 
-# prefecture number 
-prefecture_number = '2'
+try:
+    while driver.find_element(By.CLASS_NAME, 'next-btn'):
 
-# select the table and prefecture option 
-form_table = driver.find_element(By.ID, 'prefecture')
-select_prefecture = form_table.find_element(By.CSS_SELECTOR, 'option:nth-child({})'.format(prefecture_number))
-select_prefecture.click()
-print('Starting: ' + str(select_prefecture.text))
+        # table
+        member_result_table = driver.find_element(By.CLASS_NAME, 'member-result-table')
+        # tr 
+        rows = member_result_table.find_elements(By.CSS_SELECTOR, 'tr')
 
+        for row in rows:
+            td_name = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)')
+            print(str(td_name.text))
+            print('\n')
+            
+            td_details = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)')
+            print(str(td_details.text))
+            print('----------')
+
+
+        next_button = driver.find_element(By.CLASS_NAME, 'next-btn')
+        next_button.click()
+        time.sleep(1)
+
+except NoSuchElementException:
+    # table
+    member_result_table = driver.find_element(By.CLASS_NAME, 'member-result-table')
+    # tr 
+    rows = member_result_table.find_elements(By.CSS_SELECTOR, 'tr')
+
+    for row in rows:
+        td_name = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)')
+        print(str(td_name.text))
+        print('\n')
+        
+        td_details = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)')
+        print(str(td_details.text))
+        print('----------')
