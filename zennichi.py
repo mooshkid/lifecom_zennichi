@@ -2,8 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
+import pandas as pd
 import os
 import time
+import csv
 
 # start timer 
 start = time.time()
@@ -16,7 +18,7 @@ path = os.getcwd()
 
 
 
-# prefecture number
+# prefecture number 1~47
 prefecture_number = '37'
 
 # webdriver 
@@ -28,6 +30,8 @@ driver.get(url)
 prefecture = driver.find_element(By.XPATH, '//*[@id="prefecture"]/option[@selected="selected"]').text
 print('Starting: ' + str(prefecture) + '...')
 
+data_all = []
+
 try:
     while driver.find_element(By.CLASS_NAME, 'next-btn'):
 
@@ -36,7 +40,7 @@ try:
         # tr 
         rows = member_result_table.find_elements(By.CSS_SELECTOR, 'tr')
 
-        for row in rows:
+        for row in rows[:2]:
             td_name = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)')
             print(str(td_name.text))
             print('\n')
@@ -44,6 +48,13 @@ try:
             td_details = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)')
             print(str(td_details.text))
             print('----------')
+
+            td1 = str(td_name.text)
+            td2 = str(td_details.text)
+
+            df = pd.DataFrame([td1, td2])
+            data_all.append(df)
+            
 
 
         next_button = driver.find_element(By.CLASS_NAME, 'next-btn')
@@ -63,4 +74,9 @@ except NoSuchElementException:
         
         td_details = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)')
         print(str(td_details.text))
-        print('----------')
+        print('Finished')
+        print('\n')
+
+
+# fix here
+        data_all.to_csv()
