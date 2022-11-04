@@ -25,14 +25,18 @@ prefectures = [('01', '北海道'), ('02', '青森県'), ('03', '岩手県'), ('
 
 # loop all prefectures 
 for i in prefectures:
+
+    # indexing tuples
+    pref_num = i[0]
+    pref_name = i[1]
+
     # webdriver 
-    url = 'https://www.zennichi.or.jp/member_search/list/?prefecture={}&branch=&address=&representative=&shogo=&shogo_kana=&license_holder=&number=&region=&hosho_approved='.format(i)
+    url = 'https://www.zennichi.or.jp/member_search/list/?prefecture={}&branch=&address=&representative=&shogo=&shogo_kana=&license_holder=&number=&region=&hosho_approved='.format(pref_num)
     driver = webdriver.Chrome()
     driver.get(url)
 
     # find prefecture name
-    prefecture = driver.find_element(By.XPATH, '//*[@id="prefecture"]/option[@selected="selected"]').text
-    print('Starting: ' + str(prefecture) + '...')
+    print('Starting: (' + pref_num + ')' + pref_name + '...')
 
     try:
         while driver.find_element(By.CLASS_NAME, 'next-btn'):
@@ -79,4 +83,6 @@ for i in prefectures:
     df = pd.DataFrame(dict) 
         
     # saving the dataframe 
-    df.to_csv(str(prefecture) + '.csv') 
+    df.to_csv(pref_name + '.csv') 
+
+    print('Finished ' + pref_name)
