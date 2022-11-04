@@ -22,7 +22,7 @@ td_details_list = []
 
 
 # prefecture number 1~47
-prefecture_number = '03'
+prefecture_number = '37'
 
 # webdriver 
 url = 'https://www.zennichi.or.jp/member_search/list/?prefecture={}&branch=&address=&representative=&shogo=&shogo_kana=&license_holder=&number=&region=&hosho_approved='.format(prefecture_number)
@@ -33,7 +33,6 @@ driver.get(url)
 prefecture = driver.find_element(By.XPATH, '//*[@id="prefecture"]/option[@selected="selected"]').text
 print('Starting: ' + str(prefecture) + '...')
 
-data_all = []
 
 try:
     while driver.find_element(By.CLASS_NAME, 'next-btn'):
