@@ -57,7 +57,7 @@ for i in prefectures:
 
             next_button = driver.find_element(By.CLASS_NAME, 'next-btn')
             next_button.click()
-            time.sleep(1)
+            time.sleep(2)
 
     # once last time for the last page, since it doesn't have the next button
     except NoSuchElementException:
@@ -75,8 +75,8 @@ for i in prefectures:
             td_details = str(td_details.text)
             td_details_list.append(td_details)
 
+    time.sleep(2)
     driver.close()
-    time.sleep(5)
 
     # dictionary of lists  
     dict = {'name': td_name_list, 'details': td_details_list}  
@@ -86,3 +86,6 @@ for i in prefectures:
     df.to_csv(pref_name + '.csv') 
 
     print('Finished ' + pref_name)
+    time.sleep(2)
+
+print('Completed')
