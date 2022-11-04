@@ -28,6 +28,7 @@ for i in range(1, 48):
 
     # webdriver 
     url = 'https://www.zennichi.or.jp/member_search/list/?prefecture={}&branch=&address=&representative=&shogo=&shogo_kana=&license_holder=&number=&region=&hosho_approved='.format(prefecture_number)    driver = webdriver.Chrome()
+    driver = webdriver.Chrome()
     driver.get(url)
 
     # prefecture name
