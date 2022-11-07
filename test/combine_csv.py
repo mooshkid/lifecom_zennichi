@@ -5,11 +5,27 @@ import os
 
 # output csv file name 
 output_csv = 'all_name.csv'
-# remove old csv file 
+
+
+# user input yes/no
+yes_choices = ['yes', 'y']
+no_choices = ['no', 'n']
+
+# if .csv file already exists 
 if os.path.exists(output_csv):
-    os.remove(output_csv)
+    while True:
+        user_input = input('The file "' + output_csv + '" already exists. Would you like to override it? (yes/no): ')
+        if user_input.lower() in yes_choices:
+            os.remove(output_csv)
+            break
+        elif user_input.lower() in no_choices:
+            print('Terminating script')
+            exit()
+        else:
+            continue
 else:
     pass
+
 
 # empty df 
 all_data = []
