@@ -20,5 +20,5 @@ all_data = pd.concat(all_data)
 all_data.reset_index(drop=True, inplace=True)
 
 # output to csv 
-# all_data.to_csv('all.csv', mode='a') #with index
-all_data.to_csv('all.csv', mode='a', index=False) #without index
+# all_data.to_csv('name_all.csv', mode='a') #with index
+all_data.to_csv('name_all.csv', mode='a', index=False) #without index
