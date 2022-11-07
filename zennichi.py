@@ -1,3 +1,5 @@
+# how to fix prefectures with low search results with no next button??? (eg. #39) 
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -21,7 +23,7 @@ prefectures = [('01', '北海道'), ('02', '青森県'), ('03', '岩手県'), ('
 
 
 # loop all prefectures 
-for i in prefectures:
+for i in prefectures[36:]:
 
     # empty lists 
     td_name_list = []
