@@ -84,7 +84,7 @@ for i in prefectures:
     df = pd.DataFrame(dict) 
         
     # saving the dataframe 
-    df.to_csv(pref_name + '.csv') 
+    df.to_csv(pref_num + '_' + pref_name + '.csv') 
 
     print('Finished ' + pref_name)
     time.sleep(2)
