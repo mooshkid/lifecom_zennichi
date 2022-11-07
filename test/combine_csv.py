@@ -4,7 +4,7 @@ import os
 
 
 # output csv file name 
-output_csv = 'all_name.csv'
+output_csv = 'all_details.csv'
 
 
 # user input yes/no
@@ -30,12 +30,13 @@ else:
 # empty df 
 all_data = []
 
-
+# select all .csv files in directory 
 csv_files = glob.glob("results/20221104/*.csv", recursive=True)
 
 for i in csv_files:
     # select column with usecols=[]
-    df = pd.read_csv(i, header=0, usecols=[1])
+    # [0] = index, [1] = name, [2] = details 
+    df = pd.read_csv(i, header=0, usecols=[2])
     all_data.append(df)
 
 
