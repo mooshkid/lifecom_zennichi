@@ -14,4 +14,6 @@ stuff
 ### Steps:
 
 1. Run `zennichi.py`
-2. Done
+2. Done.
+
+3. (optional) Run `combine_csv.py` to combine all the results into one .csv file.
