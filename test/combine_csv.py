@@ -34,6 +34,7 @@ all_data = []
 csv_files = glob.glob("results/20221104/*.csv", recursive=True)
 
 for i in csv_files:
+    # select column with usecols=[]
     df = pd.read_csv(i, header=0, usecols=[1])
     all_data.append(df)
 
