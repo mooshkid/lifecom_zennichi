@@ -4,8 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
-import os
-import time
+import os, time, datetime
 
 # start timer 
 start = time.time()
@@ -16,6 +15,9 @@ count = 1
 os.chdir(os.path.dirname(__file__))
 path = os.getcwd()
 
+# make new directory with timestamp as the folder name
+timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+os.makedirs(timestamp)
 
 # japan prefecture tuplets 
 prefectures = [('01', '北海道'), ('02', '青森県'), ('03', '岩手県'), ('04', '宮城県'), ('05', '秋田県'), ('06', '山形県'), ('07', '福島県'), ('08', '茨城県'), ('09', '栃木県'), ('10', '群馬県'), ('11', '埼玉県'), ('12', '千葉県'), ('13', '東京都'), ('14', '神奈川県'), ('15', '山梨県'), ('16', '新潟県'), ('17', '富山県'), ('18', '石川県'), ('19', '福井県'), ('20', '長野県'), ('21', '岐阜県'), ('22', '静岡県'), ('23', '愛知県'), ('24', '三重県'), ('25', '滋賀県'), ('26', '京都府'), ('27', '大阪府'), ('28', '兵庫県'), ('29', '奈良県'), ('30', '和歌山県'), ('31', '鳥取県'), ('32', '島根県'), ('33', '岡山県'), ('34', '広島県'), ('35', '山口県'), ('36', '徳島県'), ('37', '香川県'), ('38', '愛媛県'), ('39', '高知県'), ('40', '福岡県'), ('41', '佐賀県'), ('42', '長崎県'), ('43', '熊本県'), ('44', '大分県'), ('45', '宮崎県'), ('46', '鹿児島県'), ('47', '沖縄県') ]
@@ -84,8 +86,8 @@ for i in prefectures:
     dict = {'name': td_name_list, 'details': td_details_list}  
     df = pd.DataFrame(dict) 
         
-    # saving the dataframe 
-    df.to_csv(pref_num + '_' + pref_name + '.csv') 
+    # saving the dataframe in the timestamp directory
+    df.to_csv(timestamp + '/' + pref_num + '_' + pref_name + '.csv') 
 
     print('Finished ' + pref_name)
     time.sleep(2)
