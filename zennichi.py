@@ -22,11 +22,7 @@ prefectures = [('01', '北海道'), ('02', '青森県'), ('03', '岩手県'), ('
 
 
 # loop all prefectures 
-for i in prefectures[36:]:
-
-    # empty lists 
-    td_name_list = []
-    td_details_list = []
+for i in prefectures:
 
     # indexing tuples
     pref_num = i[0]
@@ -37,8 +33,12 @@ for i in prefectures[36:]:
     driver = webdriver.Chrome()
     driver.get(url)
 
-    # find prefecture name
     print('Starting: (' + pref_num + ')' + pref_name + '...')
+
+
+    # empty lists 
+    td_name_list = []
+    td_details_list = []
 
     try:
         while driver.find_element(By.CLASS_NAME, 'next-btn'):
