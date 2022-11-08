@@ -32,7 +32,7 @@ else:
 all_data = []
 
 # select all .csv files in directory 
-csv_files = glob.glob("results/20221104/*.csv", recursive=True)
+csv_files = glob.glob("20221104/prefectures/*.csv", recursive=True)
 
 for i in csv_files:
     # select column with usecols=[]
