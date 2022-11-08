@@ -3,12 +3,12 @@ import re
 
 email_list = []
 
-with open('all_details.csv', newline='') as inputfile:
+with open('./20221104/all_details.csv', newline='') as inputfile:
     reader = csv.reader(inputfile, delimiter=',')
 
     for row in reader:
 
-        pattern = re.compile(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.com")
+        pattern = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
         match = pattern.findall(row[0])
 
         if match:
