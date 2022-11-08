@@ -19,8 +19,9 @@ if os.path.exists(output_csv):
             os.remove(output_csv)
             break
         elif user_input.lower() in no_choices:
-            print('Terminating script')
-            exit()
+            new_csv_name = input('Please enter a new file name: ')
+            output_csv = new_csv_name + '.csv'
+            break
         else:
             continue
 else:
