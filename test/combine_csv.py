@@ -2,7 +2,8 @@ import pandas as pd
 import glob
 import os
 
-
+# directory name containing csv files. (ie. the date)
+dir_csv =  '20221104'
 # output csv file name 
 output_csv = 'prefectures_all.csv'
 
@@ -32,7 +33,7 @@ else:
 all_data = []
 
 # select all .csv files in directory 
-csv_files = glob.glob("20221104/prefectures/*.csv", recursive=True)
+csv_files = glob.glob(dir_csv + '/prefectures/*.csv', recursive=True)
 
 for i in csv_files:
     # select column with usecols=[]
