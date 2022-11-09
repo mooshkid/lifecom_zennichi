@@ -4,7 +4,7 @@ import os
 
 
 # output csv file name 
-output_csv = 'all_details.csv'
+output_csv = 'prefectures_all.csv'
 
 
 # user input yes/no
@@ -28,7 +28,7 @@ else:
     pass
 
 
-# empty df 
+# empty list
 all_data = []
 
 # select all .csv files in directory 
@@ -37,9 +37,8 @@ csv_files = glob.glob("20221104/prefectures/*.csv", recursive=True)
 for i in csv_files:
     # select column with usecols=[]
     # [0] = index, [1] = name, [2] = details 
-    df = pd.read_csv(i, header=0, usecols=[2])
+    df = pd.read_csv(i, header=0, usecols=[1,2])
     all_data.append(df)
-
 
 # concatenate dataframes 
 all_data = pd.concat(all_data)
@@ -48,5 +47,5 @@ all_data = pd.concat(all_data)
 all_data.reset_index(drop=True, inplace=True)
 
 # output to csv 
-# all_data.to_csv('name_all.csv', mode='a') #with index
-all_data.to_csv(output_csv, mode='a', index=False) #without index
+all_data.to_csv(output_csv, mode='a') #with index
+# all_data.to_csv(output_csv, mode='a', index=False) #without index
