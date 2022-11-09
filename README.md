@@ -2,18 +2,18 @@
 
 ## About the Project
 
-This project exports the member details from
-[https://www.zennichi.or.jp/member_search/](https://www.zennichi.or.jp/member_search/)
+This project extracts all member details from
+[https://www.zennichi.or.jp/member_search/](https://www.zennichi.or.jp/member_search/), and saves it as a csv file per prefecture.
 
 ### Dependencies
 
-stuff
+Python, Selenium
 
 ## Getting Started
 
 ### Steps:
 
 1. Run `zennichi.py`
-2. Done.
+2. \*.csv files are created.
 
-3. (optional) Run `combine_csv.py` to combine all the results into one .csv file.
+3. (optional) Run `combine_csv.py` to combine all the csv files into one csv.
