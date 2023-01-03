@@ -15,7 +15,7 @@ Python, Selenium
 
 1. Run `zennichi.py`
 ```
-zennichi main.py
+py zennichi.py
 ```
 2. \*.csv files are created.
 3. _(optional)_<br>Run `combine_csv.py` to combine all the csv files into one csv.
